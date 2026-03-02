@@ -1,0 +1,254 @@
+version: '3.8'
+
+services:
+  # Database
+  mysql:
+    image: mysql:8.4.0
+    container_name: hafasa-mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    ports:
+      - "3306:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - hafasa-network
+    # volumes:
+    #   - mysql_data:/var/lib/mysql
+    #   - ./data/mysql-docker/user-service-sub.sql:/docker-entrypoint-initdb.d/1-user-service-sub.sql
+    #   - ./data/mysql-docker/product-service-sub.sql:/docker-entrypoint-initdb.d/2-product-service-sub.sql
+    #   - ./data/mysql-docker/order-service-sub.sql:/docker-entrypoint-initdb.d/3-order-service-sub.sql
+
+  # Redis
+  redis:
+    image: redis:7.4.1
+    container_name: hafasa-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - hafasa-network
+      
+  # Eureka Service Discovery
+  eureka-server:
+    build:
+      context: ./eureka-server
+      dockerfile: Dockerfile
+    container_name: hafasa-eureka
+    ports:
+      - "8761:8761"
+    networks:
+      - hafasa-network
+      
+  # Elasticsearch
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.12.2
+    container_name: hafasa-elasticsearch
+    environment:
+      - node.name=elasticsearch
+      - cluster.name=elasticsearch-cluster
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    volumes:
+      - elasticsearch_data:/usr/share/elasticsearch/data
+    networks:
+      - hafasa-network
+      
+  # Kibana
+  kibana:
+    image: docker.elastic.co/kibana/kibana:8.12.2
+    container_name: hafasa-kibana
+    environment:
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+    ports:
+      - "5601:5601"
+    depends_on:
+      - elasticsearch
+    networks:
+      - hafasa-network
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: hafasa-rabbitmq
+    ports:
+      - "5672:5672"      # AMQP protocol
+      - "15672:15672"    # Management UI
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+    networks:
+      - hafasa-network
+  # API Gateway Service
+  api-gateway:
+    build:
+      context: ./api-gateway
+      dockerfile: Dockerfile
+    container_name: hafasa-api-gateway
+    ports:
+      - "8000:8000"
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+    depends_on:
+      - eureka-server
+    networks:
+      - hafasa-network
+
+  # User Service
+  user-service:
+    build:
+      context: ./user-service
+      dockerfile: Dockerfile
+    container_name: hafasa-user-service
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+      - MYSQL_HOST=mysql
+      - MYSQL_PORT=3306
+      - MYSQL_DATABASE=hafasa_user_db
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+    env_file:
+      - path: ./user-service/.env
+        required: true
+    depends_on:
+      - mysql
+      - redis
+      - eureka-server
+    networks:
+      - hafasa-network
+
+  # Product Service
+  product-service:
+    build:
+      context: ./product-service
+      dockerfile: Dockerfile
+    container_name: hafasa-product-service
+    ports:
+      - "8081:8081"
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+      - MYSQL_HOST=mysql
+      - MYSQL_PORT=3306
+      - MYSQL_DATABASE=hafasa_user_db
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+    env_file:
+      - path: ./product-service/.env
+        required: true
+    depends_on:
+      - mysql
+      - redis
+      - elasticsearch
+      - eureka-server
+    networks:
+      - hafasa-network
+
+  # Order Service
+  order-service:
+    build:
+      context: ./order-service
+      dockerfile: Dockerfile
+    container_name: hafasa-order-service
+    ports:
+      - "8082:8082"
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+      - MYSQL_HOST=mysql
+      - MYSQL_PORT=3306
+      - MYSQL_DATABASE=hafasa_user_db
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+    env_file:
+      - path: ./order-service/.env
+        required: true 
+    depends_on:
+      - mysql
+      - redis
+      - eureka-server
+    networks:
+      - hafasa-network
+
+  # Payment Service
+  payment-service:
+    build:
+      context: ./payment-service
+      dockerfile: Dockerfile
+    container_name: hafasa-payment-service
+    ports:
+      - "8083:8083"
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+    env_file:
+      - path: ./payment-service/.env
+        required: true
+    depends_on:
+      - eureka-server
+    networks:
+      - hafasa-network
+
+  email-service:
+    build:
+      context: ./email-service
+      dockerfile: Dockerfile
+    container_name: hafasa-email-service
+    ports:
+      - "8084:8084"
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+      - MYSQL_HOST=mysql
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+    env_file:
+      - path: ./email-service/.env
+        required: true
+    depends_on:
+      - mysql
+      - redis
+      - eureka-server      
+      - rabbitmq
+    networks:
+      - hafasa-network
+      
+  # # Web Frontend
+  # web-app:
+  #   build:
+  #     context: ./web-app
+  #     dockerfile: Dockerfile
+  #   container_name: hafasa-web-app
+  #   ports:
+  #     - "3000:3000"
+  #   environment:
+  #     - NEXT_PUBLIC_API_URL=http://api-gateway:8000
+  #   depends_on:
+  #     - api-gateway
+  #   networks:
+  #     - hafasa-network
+
+
+networks:
+  hafasa-network:
+    driver: bridge
+
+volumes:
+  mysql_data:
+  redis_data:
+  elasticsearch_data:
+

@@ -1,0 +1,72 @@
+2025-05-22 19:06:12 [payment-service:8083] [main] INFO  c.i.SpringboostBackendPayosApplicationTests - Starting SpringboostBackendPayosApplicationTests using Java 23.0.2 with PID 16808 (started by minhphuong in D:\svNam4\KTPM\hafasa-microservices\payment-service)
+2025-05-22 19:06:12 [payment-service:8083] [main] DEBUG c.i.SpringboostBackendPayosApplicationTests - Running with Spring Boot v3.4.1, Spring v6.2.1
+2025-05-22 19:06:12 [payment-service:8083] [main] INFO  c.i.SpringboostBackendPayosApplicationTests - The following 1 profile is active: "dev"
+2025-05-22 19:06:14 [payment-service:8083] [main] INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=1f3bb158-4577-3178-adaf-4931dc085010
+2025-05-22 19:06:14 [payment-service:8083] [main] INFO  c.i.c.ApplicationInitConfig - Initializing application.....
+2025-05-22 19:06:16 [payment-service:8083] [main] INFO  o.s.c.n.e.c.DiscoveryClientOptionalArgsConfiguration - Eureka HTTP Client uses RestTemplate.
+2025-05-22 19:06:16 [payment-service:8083] [main] WARN  o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger - Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2025-05-22 19:06:17 [payment-service:8083] [main] INFO  o.s.c.n.eureka.InstanceInfoFactory - Setting initial instance status as: STARTING
+2025-05-22 19:06:17 [payment-service:8083] [main] INFO  c.netflix.discovery.DiscoveryClient - Initializing Eureka in region us-east-1
+2025-05-22 19:06:17 [payment-service:8083] [main] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2025-05-22 19:06:17 [payment-service:8083] [main] INFO  c.netflix.discovery.DiscoveryClient - Disable delta property : false
+2025-05-22 19:06:17 [payment-service:8083] [main] INFO  c.netflix.discovery.DiscoveryClient - Single vip registry refresh property : null
+2025-05-22 19:06:17 [payment-service:8083] [main] INFO  c.netflix.discovery.DiscoveryClient - Force full registry fetch : false
+2025-05-22 19:06:17 [payment-service:8083] [main] INFO  c.netflix.discovery.DiscoveryClient - Application is null : false
+2025-05-22 19:06:17 [payment-service:8083] [main] INFO  c.netflix.discovery.DiscoveryClient - Registered Applications size is zero : true
+2025-05-22 19:06:17 [payment-service:8083] [main] INFO  c.netflix.discovery.DiscoveryClient - Application version is -1: true
+2025-05-22 19:06:17 [payment-service:8083] [main] INFO  c.netflix.discovery.DiscoveryClient - Getting all instance registry info from the eureka server
+2025-05-22 19:06:18 [payment-service:8083] [main] INFO  c.netflix.discovery.DiscoveryClient - The response status is 200
+2025-05-22 19:06:18 [payment-service:8083] [main] INFO  c.netflix.discovery.DiscoveryClient - Starting heartbeat executor: renew interval is: 30
+2025-05-22 19:06:18 [payment-service:8083] [main] INFO  c.n.discovery.InstanceInfoReplicator - InstanceInfoReplicator onDemand update allowed rate per min is 4
+2025-05-22 19:06:18 [payment-service:8083] [main] INFO  c.netflix.discovery.DiscoveryClient - Discovery Client initialized at timestamp 1747915578187 with initial instances count: 4
+2025-05-22 19:06:18 [payment-service:8083] [main] INFO  o.s.c.n.e.s.EurekaServiceRegistry - Registering application PAYMENT-SERVICE with eureka with status UP
+2025-05-22 19:06:18 [payment-service:8083] [main] INFO  c.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1747915578200, current=UP, previous=STARTING]
+2025-05-22 19:06:18 [payment-service:8083] [DiscoveryClient-InstanceInfoReplicator-%d] INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_PAYMENT-SERVICE/payment-service:8083: registering service...
+2025-05-22 19:06:18 [payment-service:8083] [main] INFO  c.i.SpringboostBackendPayosApplicationTests - Started SpringboostBackendPayosApplicationTests in 6.146 seconds (process running for 7.873)
+2025-05-22 19:06:18 [payment-service:8083] [main] INFO  c.i.c.ApplicationInitConfig - Application initialization completed .....
+2025-05-22 19:06:18 [payment-service:8083] [main] INFO  c.i.c.ApplicationInitConfig - swagger-ui: http://localhost:8083/payment-service/swagger-ui.html
+2025-05-22 19:06:18 [payment-service:8083] [DiscoveryClient-InstanceInfoReplicator-%d] INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_PAYMENT-SERVICE/payment-service:8083 - registration status: 204
+2025-05-22 19:06:20 [payment-service:8083] [SpringApplicationShutdownHook] INFO  o.s.c.n.e.s.EurekaServiceRegistry - Unregistering application PAYMENT-SERVICE with eureka with status DOWN
+2025-05-22 19:06:20 [payment-service:8083] [SpringApplicationShutdownHook] INFO  c.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1747915580555, current=DOWN, previous=UP]
+2025-05-22 19:06:20 [payment-service:8083] [DiscoveryClient-InstanceInfoReplicator-%d] INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_PAYMENT-SERVICE/payment-service:8083: registering service...
+2025-05-22 19:06:20 [payment-service:8083] [SpringApplicationShutdownHook] INFO  c.netflix.discovery.DiscoveryClient - Shutting down DiscoveryClient ...
+2025-05-22 19:06:20 [payment-service:8083] [DiscoveryClient-InstanceInfoReplicator-%d] INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_PAYMENT-SERVICE/payment-service:8083 - registration status: 204
+2025-05-22 19:06:20 [payment-service:8083] [SpringApplicationShutdownHook] INFO  c.netflix.discovery.DiscoveryClient - Unregistering ...
+2025-05-22 19:06:20 [payment-service:8083] [SpringApplicationShutdownHook] INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_PAYMENT-SERVICE/payment-service:8083 - deregister  status: 200
+2025-05-22 19:06:20 [payment-service:8083] [SpringApplicationShutdownHook] INFO  c.netflix.discovery.DiscoveryClient - Completed shut down of DiscoveryClient
+2025-05-22 19:08:26 [payment-service:8083] [main] INFO  c.i.SpringboostBackendPayosApplicationTests - Starting SpringboostBackendPayosApplicationTests using Java 23.0.2 with PID 22992 (started by minhphuong in D:\svNam4\KTPM\hafasa-microservices\payment-service)
+2025-05-22 19:08:26 [payment-service:8083] [main] DEBUG c.i.SpringboostBackendPayosApplicationTests - Running with Spring Boot v3.4.1, Spring v6.2.1
+2025-05-22 19:08:26 [payment-service:8083] [main] INFO  c.i.SpringboostBackendPayosApplicationTests - The following 1 profile is active: "dev"
+2025-05-22 19:08:27 [payment-service:8083] [main] INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=1f3bb158-4577-3178-adaf-4931dc085010
+2025-05-22 19:08:28 [payment-service:8083] [main] INFO  c.i.c.ApplicationInitConfig - Initializing application.....
+2025-05-22 19:08:29 [payment-service:8083] [main] INFO  o.s.c.n.e.c.DiscoveryClientOptionalArgsConfiguration - Eureka HTTP Client uses RestTemplate.
+2025-05-22 19:08:29 [payment-service:8083] [main] WARN  o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger - Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2025-05-22 19:08:29 [payment-service:8083] [main] INFO  o.s.c.n.eureka.InstanceInfoFactory - Setting initial instance status as: STARTING
+2025-05-22 19:08:29 [payment-service:8083] [main] INFO  c.netflix.discovery.DiscoveryClient - Initializing Eureka in region us-east-1
+2025-05-22 19:08:29 [payment-service:8083] [main] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2025-05-22 19:08:29 [payment-service:8083] [main] INFO  c.netflix.discovery.DiscoveryClient - Disable delta property : false
+2025-05-22 19:08:29 [payment-service:8083] [main] INFO  c.netflix.discovery.DiscoveryClient - Single vip registry refresh property : null
+2025-05-22 19:08:29 [payment-service:8083] [main] INFO  c.netflix.discovery.DiscoveryClient - Force full registry fetch : false
+2025-05-22 19:08:29 [payment-service:8083] [main] INFO  c.netflix.discovery.DiscoveryClient - Application is null : false
+2025-05-22 19:08:29 [payment-service:8083] [main] INFO  c.netflix.discovery.DiscoveryClient - Registered Applications size is zero : true
+2025-05-22 19:08:29 [payment-service:8083] [main] INFO  c.netflix.discovery.DiscoveryClient - Application version is -1: true
+2025-05-22 19:08:29 [payment-service:8083] [main] INFO  c.netflix.discovery.DiscoveryClient - Getting all instance registry info from the eureka server
+2025-05-22 19:08:30 [payment-service:8083] [main] INFO  c.netflix.discovery.DiscoveryClient - The response status is 200
+2025-05-22 19:08:30 [payment-service:8083] [main] INFO  c.netflix.discovery.DiscoveryClient - Starting heartbeat executor: renew interval is: 30
+2025-05-22 19:08:30 [payment-service:8083] [main] INFO  c.n.discovery.InstanceInfoReplicator - InstanceInfoReplicator onDemand update allowed rate per min is 4
+2025-05-22 19:08:30 [payment-service:8083] [main] INFO  c.netflix.discovery.DiscoveryClient - Discovery Client initialized at timestamp 1747915710501 with initial instances count: 4
+2025-05-22 19:08:30 [payment-service:8083] [main] INFO  o.s.c.n.e.s.EurekaServiceRegistry - Registering application PAYMENT-SERVICE with eureka with status UP
+2025-05-22 19:08:30 [payment-service:8083] [main] INFO  c.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1747915710510, current=UP, previous=STARTING]
+2025-05-22 19:08:30 [payment-service:8083] [DiscoveryClient-InstanceInfoReplicator-%d] INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_PAYMENT-SERVICE/payment-service:8083: registering service...
+2025-05-22 19:08:30 [payment-service:8083] [main] INFO  c.i.SpringboostBackendPayosApplicationTests - Started SpringboostBackendPayosApplicationTests in 4.655 seconds (process running for 6.45)
+2025-05-22 19:08:30 [payment-service:8083] [main] INFO  c.i.c.ApplicationInitConfig - Application initialization completed .....
+2025-05-22 19:08:30 [payment-service:8083] [main] INFO  c.i.c.ApplicationInitConfig - swagger-ui: http://localhost:8083/payment-service/swagger-ui.html
+2025-05-22 19:08:30 [payment-service:8083] [DiscoveryClient-InstanceInfoReplicator-%d] INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_PAYMENT-SERVICE/payment-service:8083 - registration status: 204
+2025-05-22 19:08:31 [payment-service:8083] [SpringApplicationShutdownHook] INFO  o.s.c.n.e.s.EurekaServiceRegistry - Unregistering application PAYMENT-SERVICE with eureka with status DOWN
+2025-05-22 19:08:31 [payment-service:8083] [SpringApplicationShutdownHook] INFO  c.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1747915711413, current=DOWN, previous=UP]
+2025-05-22 19:08:31 [payment-service:8083] [DiscoveryClient-InstanceInfoReplicator-%d] INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_PAYMENT-SERVICE/payment-service:8083: registering service...
+2025-05-22 19:08:31 [payment-service:8083] [SpringApplicationShutdownHook] INFO  c.netflix.discovery.DiscoveryClient - Shutting down DiscoveryClient ...
+2025-05-22 19:08:31 [payment-service:8083] [DiscoveryClient-InstanceInfoReplicator-%d] INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_PAYMENT-SERVICE/payment-service:8083 - registration status: 204
+2025-05-22 19:08:31 [payment-service:8083] [SpringApplicationShutdownHook] INFO  c.netflix.discovery.DiscoveryClient - Unregistering ...
+2025-05-22 19:08:31 [payment-service:8083] [SpringApplicationShutdownHook] INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_PAYMENT-SERVICE/payment-service:8083 - deregister  status: 200
+2025-05-22 19:08:31 [payment-service:8083] [SpringApplicationShutdownHook] INFO  c.netflix.discovery.DiscoveryClient - Completed shut down of DiscoveryClient
