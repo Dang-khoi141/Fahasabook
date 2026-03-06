@@ -29,7 +29,7 @@
 1. Clone project:
 
 ```bash
-git clone git@github.com:atuandev/hafasa-microservices.git
+git@github.com:Dang-khoi141/Fahasabook.git
 ```
 
 3. Install MySQL from Docker
