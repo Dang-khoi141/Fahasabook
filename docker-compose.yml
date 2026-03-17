@@ -142,7 +142,7 @@ services:
       - SPRING_PROFILES_ACTIVE=prod
       - MYSQL_HOST=mysql
       - MYSQL_PORT=3306
-      - MYSQL_DATABASE=hafasa_user_db
+      - MYSQL_DATABASE=hafasa_product_db
       - REDIS_HOST=redis
       - REDIS_PORT=6379
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
@@ -170,7 +170,7 @@ services:
       - SPRING_PROFILES_ACTIVE=prod
       - MYSQL_HOST=mysql
       - MYSQL_PORT=3306
-      - MYSQL_DATABASE=hafasa_user_db
+      - MYSQL_DATABASE=hafasa_order_db
       - REDIS_HOST=redis
       - REDIS_PORT=6379
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
@@ -216,6 +216,9 @@ services:
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
       - RABBITMQ_DEFAULT_USER=guest
       - RABBITMQ_DEFAULT_PASS=guest
+      - BREVO_API_KEY=${BREVO_API_KEY}
+      - BREVO_SENDER_EMAIL=${BREVO_SENDER_EMAIL}
+      - BREVO_SENDER_NAME=${BREVO_SENDER_NAME}
     env_file:
       - path: ./email-service/.env
         required: true
